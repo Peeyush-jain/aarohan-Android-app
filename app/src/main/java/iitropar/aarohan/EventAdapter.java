@@ -25,17 +25,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView name , description , venue , time ;
-        public CheckBox checkBox ;
-        public Button register ;
+        public TextView teamA , teamB , venue , time ;
+
         public ViewHolder(View view) {
             super(view);
-            name =  view.findViewById(R.id.name);
+            teamA =  view.findViewById(R.id.teamA);
             venue = view.findViewById(R.id.venue);
             time =  view.findViewById(R.id.time);
-            description = view.findViewById(R.id.description);
-            checkBox = view.findViewById(R.id.checkbox);
-            register = view.findViewById(R.id.register);
+            teamB = view.findViewById(R.id.teamsecond);
+
             dba = new DBHandler(context, null, null, 1);
         }
     }
@@ -58,52 +56,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Event event = eventList.get(position);
         // setting the value of perameter
-        holder.name.setText(event.getEventName());
-        holder.venue.setText(event.getEventVenue());
-        holder.time.setText(event.getEventTime());
-        holder.description.setText(event.getEventDescription());
-        if (event.isEventNotify() == true){
-            holder.checkBox.setChecked(true);
-        }
-        else {
-            holder.checkBox.setChecked(false);
-        }
-
-
-
-        holder.checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (eventList.get(position).isEventNotify()){
-                    holder.checkBox.setChecked(false);
-                    eventList.get(position).setEventNotify(false);
-                    dba.updateNotifiy(0,event.getEventPk());
-                }
-                else {
-                    holder.checkBox.setChecked(true);
-                    eventList.get(position).setEventNotify(true);
-                    dba.updateNotifiy(1,event.getEventPk());
-                }
-            }
-        });
-        holder.register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               String url = "https://www.facebook.com/";
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                  i.setData(Uri.parse(url));
-                  context.startActivity(i);
-
-            }
-        });
-
-        holder.name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final BottomSheetDialogFragment userViewBS = EventBS.newInstance(event.getEventName(),event.getEventRules());
-                userViewBS.show(fragmentManager, userViewBS.getTag());
-            }
-        });
+        holder.teamA.setText(event.getTeamA());
+        holder.venue.setText(event.getVenue());
+        holder.time.setText(event.getTime());
+        holder.teamB.setText(event.getTeamB());
 
     }
 

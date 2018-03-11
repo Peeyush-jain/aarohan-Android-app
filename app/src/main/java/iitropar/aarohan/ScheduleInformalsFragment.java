@@ -43,7 +43,7 @@ public class ScheduleInformalsFragment extends Fragment{
         // Inflate the layout for this fragment
         myView = inflater.inflate(R.layout.fragment_schedule_day, container, false);
         recyclerView = myView.findViewById(R.id.recyclerView);
-        register = myView.findViewById(R.id.register);
+
         context = getContext() ;
         dba = new DBHandler(getContext(), null, null, 1);
         eventList = new ArrayList<Event>();

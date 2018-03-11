@@ -11,19 +11,18 @@ import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "storage.db";
+    public static final String DATABASE_NAME = "aarohan.db";
 
     // chat Room table
-    public static final String TABLE_EVENTS = "eventTable";
-    public static final String COLUMN_EVENT_PK = "eventPK";
-    public static final String COLUMN_EVENT_NAME = "eventName";
-    public static final String COLUMN_EVENT_VENUE = "eventVenue";
-    public static final String COLUMN_EVENT_TIME = "eventTime";
-    public static final String COLUMN_EVENT_DAY= "eventDay";
-    public static final String COLUMN_EVENT_DESCRIPTION = "eventDescription";
-    public static final String COLUMN_EVENT_RULES = "eventRules";
-    public static final String COLUMN_EVENT_TYPE = "eventType";
-    public static final String COLUMN_EVENT_NOTIFY = "eventNotify";
+    public static final String TABLE_FIXTURES = "fixtureTable";
+    public static final String COLUMN_FIXTURE_PK = "fixturePK";
+    public static final String COLUMN_FIXTURE_TEAMA = "teamA";
+    public static final String COLUMN_FIXTURE_TEAMB = "teamB";
+    public static final String COLUMN_FIXTURE_VENUE = "venue";
+    public static final String COLUMN_FIXTURE_TIME = "time";
+    public static final String COLUMN_FIXTURE_DAY= "day";
+    public static final String COLUMN_FIXTURE_TYPE = "type";
+    
 
 
 
@@ -34,23 +33,20 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String queryChat = "CREATE TABLE " + TABLE_EVENTS + "(" + COLUMN_EVENT_NAME + " TEXT,"
-                + COLUMN_EVENT_PK + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COLUMN_EVENT_VENUE + " TEXT,"
-                + COLUMN_EVENT_TIME + " TEXT,"
-                + COLUMN_EVENT_DAY+ " INTEGER,"
-                + COLUMN_EVENT_DESCRIPTION + " TEXT,"
-                + COLUMN_EVENT_RULES+ " TEXT,"
-                + COLUMN_EVENT_TYPE+ " INTEGER,"
-                + COLUMN_EVENT_NOTIFY+ " INTEGER DEFAULT 0"
-
+        String queryChat = "CREATE TABLE " + TABLE_FIXTURES + "(" + COLUMN_FIXTURE_TEAMA + " TEXT,"
+                + COLUMN_FIXTURE_PK + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_FIXTURE_VENUE + " TEXT,"
+                + COLUMN_FIXTURE_TIME + " TEXT,"
+                + COLUMN_FIXTURE_DAY+ " INTEGER,"
+                + COLUMN_FIXTURE_TEAMB + " TEXT,"
+                + COLUMN_FIXTURE_TYPE+ " INTEGER"
                 + ");";
         db.execSQL(queryChat);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FIXTURES);
         onCreate(db);
     }
 
@@ -60,85 +56,65 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public long insertTableEvents(Event event) {
         ContentValues initialValues = new ContentValues();
-        initialValues.put(COLUMN_EVENT_NAME, event.getEventName());
-        initialValues.put(COLUMN_EVENT_VENUE, event.getEventVenue());
-        initialValues.put(COLUMN_EVENT_TIME, event.getEventTime());
-        initialValues.put(COLUMN_EVENT_DAY, event.getEventDay());
-        initialValues.put(COLUMN_EVENT_DESCRIPTION, event.getEventDescription());
-        initialValues.put(COLUMN_EVENT_RULES, event.getEventRules());
-        initialValues.put(COLUMN_EVENT_TYPE, event.getEventType());
-        initialValues.put(COLUMN_EVENT_NOTIFY, event.isEventNotify());
+        initialValues.put(COLUMN_FIXTURE_TEAMA, event.getTeamA());
+        initialValues.put(COLUMN_FIXTURE_VENUE, event.getVenue());
+        initialValues.put(COLUMN_FIXTURE_TIME, event.getTime());
+        initialValues.put(COLUMN_FIXTURE_DAY, event.getDay());
+        initialValues.put(COLUMN_FIXTURE_TEAMB, event.getTeamB());
+        initialValues.put(COLUMN_FIXTURE_TYPE, event.getType());
+
 
 
         SQLiteDatabase db = getWritableDatabase();
-        return db.insert(TABLE_EVENTS, null, initialValues);
+        return db.insert(TABLE_FIXTURES, null, initialValues);
     }
 
-    public long  updateNotifiy(int isNotify , int pK) {
-        ContentValues updateValues = new ContentValues();
-        updateValues.put(COLUMN_EVENT_NOTIFY,isNotify);
-        SQLiteDatabase db = getWritableDatabase();
 
-        return db.update(TABLE_EVENTS, updateValues, COLUMN_EVENT_PK + " = ?",new String[]{String.valueOf(pK)});
-    }
 
 
     public void deleteEvent(int pK){
-        String query = "DELETE FROM " +  TABLE_EVENTS + " WHERE " + COLUMN_EVENT_PK + " = " + pK;
+        String query = "DELETE FROM " +  TABLE_FIXTURES + " WHERE " + COLUMN_FIXTURE_PK + " = " + pK;
         getWritableDatabase().execSQL(query);
 
     }
     public void clearDatabase(){
-        String query = "DELETE FROM " +  TABLE_EVENTS ;
+        String query = "DELETE FROM " +  TABLE_FIXTURES ;
         getWritableDatabase().execSQL(query);
     }
 
     public ArrayList<Event> getData( ) {
         ArrayList<Event> dbstring = new ArrayList<Event>();
         SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_EVENTS ;
+        String query = "SELECT * FROM " + TABLE_FIXTURES ;
         Cursor c = db.rawQuery(query, null);
         c.moveToFirst();
 
         while (!c.isAfterLast()) {
             Event event = new Event();
-            if (c.getString(c.getColumnIndex("eventPK")) != null) {
+            if (c.getString(c.getColumnIndex("fixturePK")) != null) {
 
-                event.setEventPk(c.getInt(c.getColumnIndex("eventPK")));
+                event.setPk(c.getInt(c.getColumnIndex("fixturePK")));
             }
 
-            if (c.getString(c.getColumnIndex("eventName")) != null) {
-                event.setEventName(c.getString(c.getColumnIndex("eventName")));
+            if (c.getString(c.getColumnIndex("teamA")) != null) {
+                event.setTeamA(c.getString(c.getColumnIndex("teamA")));
             }
-            if (c.getString(c.getColumnIndex("eventVenue")) != null) {
-                event.setEventVenue(c.getString(c.getColumnIndex("eventVenue")));
+            if (c.getString(c.getColumnIndex("teamB")) != null) {
+                event.setTeamB(c.getString(c.getColumnIndex("teamB")));
             }
-            if (c.getString(c.getColumnIndex("eventTime")) != null) {
-                event.setEventTime(c.getString(c.getColumnIndex("eventTime")));
+            if (c.getString(c.getColumnIndex("venue")) != null) {
+                event.setVenue(c.getString(c.getColumnIndex("venue")));
             }
-            if (c.getString(c.getColumnIndex("eventDay")) != null) {
-                event.setEventDay(c.getInt(c.getColumnIndex("eventDay")));
+            if (c.getString(c.getColumnIndex("time")) != null) {
+                event.setTime(c.getString(c.getColumnIndex("time")));
             }
-            if (c.getString(c.getColumnIndex("eventDescription")) != null) {
-                event.setEventDescription(c.getString(c.getColumnIndex("eventDescription")));
+            if (c.getString(c.getColumnIndex("type")) != null) {
+                event.setType(c.getInt(c.getColumnIndex("type")));
             }
-            if (c.getString(c.getColumnIndex("eventType")) != null) {
-                event.setEventType(c.getInt(c.getColumnIndex("eventType")));
+            if (c.getString(c.getColumnIndex("day")) != null) {
+                event.setDay(c.getInt(c.getColumnIndex("day")));
             }
-            if (c.getString(c.getColumnIndex("eventRules")) != null) {
-                event.setEventRules(c.getString(c.getColumnIndex("eventRules")));
-            }
-            if (c.getString(c.getColumnIndex("eventNotify")) != null) {
 
-                int flag = c.getInt(c.getColumnIndex("eventNotify"));
-                if (flag == 0){
-                    event.setEventNotify(false);
-                }
-                else {
-                    event.setEventNotify(true);
-                }
-
-            }
             dbstring.add(event);
             c.moveToNext();
         }
@@ -147,52 +123,39 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<Event> getDataDayType(int day, int type ) {
+    public ArrayList<Event> getDataDayType(int day , int type) {
         ArrayList<Event> dbstring = new ArrayList<Event>();
         SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_EVENTS  + " WHERE " + COLUMN_EVENT_DAY + " = " + day + " AND " + COLUMN_EVENT_TYPE + " = "  + type ;
+        String query = "SELECT * FROM " + TABLE_FIXTURES  + " WHERE " + COLUMN_FIXTURE_DAY + " = " + day + " AND " + COLUMN_FIXTURE_TYPE + " = "  + type ;
         Cursor c = db.rawQuery(query, null);
         c.moveToFirst();
 
         while (!c.isAfterLast()) {
             Event event = new Event();
-            if (c.getString(c.getColumnIndex("eventPK")) != null) {
+            if (c.getString(c.getColumnIndex("fixturePK")) != null) {
 
-                event.setEventPk(c.getInt(c.getColumnIndex("eventPK")));
+                event.setPk(c.getInt(c.getColumnIndex("fixturePK")));
             }
 
-            if (c.getString(c.getColumnIndex("eventName")) != null) {
-                event.setEventName(c.getString(c.getColumnIndex("eventName")));
+            if (c.getString(c.getColumnIndex("teamA")) != null) {
+                event.setTeamA(c.getString(c.getColumnIndex("teamA")));
             }
-            if (c.getString(c.getColumnIndex("eventVenue")) != null) {
-                event.setEventVenue(c.getString(c.getColumnIndex("eventVenue")));
+            if (c.getString(c.getColumnIndex("teamB")) != null) {
+                event.setTeamB(c.getString(c.getColumnIndex("teamB")));
             }
-            if (c.getString(c.getColumnIndex("eventTime")) != null) {
-                event.setEventTime(c.getString(c.getColumnIndex("eventTime")));
+            if (c.getString(c.getColumnIndex("venue")) != null) {
+                event.setVenue(c.getString(c.getColumnIndex("venue")));
             }
-            if (c.getString(c.getColumnIndex("eventDay")) != null) {
-                event.setEventDay(c.getInt(c.getColumnIndex("eventDay")));
+            if (c.getString(c.getColumnIndex("time")) != null) {
+                event.setTime(c.getString(c.getColumnIndex("time")));
             }
-            if (c.getString(c.getColumnIndex("eventDescription")) != null) {
-                event.setEventDescription(c.getString(c.getColumnIndex("eventDescription")));
+            if (c.getString(c.getColumnIndex("type")) != null) {
+                event.setType(c.getInt(c.getColumnIndex("type")));
             }
-            if (c.getString(c.getColumnIndex("eventType")) != null) {
-                event.setEventType(c.getInt(c.getColumnIndex("eventType")));
+            if (c.getString(c.getColumnIndex("day")) != null) {
+                event.setDay(c.getInt(c.getColumnIndex("day")));
             }
-            if (c.getString(c.getColumnIndex("eventRules")) != null) {
-                event.setEventRules(c.getString(c.getColumnIndex("eventRules")));
-            }
-            if (c.getString(c.getColumnIndex("eventNotify")) != null) {
 
-                int flag = c.getInt(c.getColumnIndex("eventNotify"));
-                if (flag == 0){
-                    event.setEventNotify(false);
-                }
-                else {
-                    event.setEventNotify(true);
-                }
-
-            }
             dbstring.add(event);
             c.moveToNext();
         }
@@ -203,102 +166,36 @@ public class DBHandler extends SQLiteOpenHelper {
     public ArrayList<Event> getDataDay(int day) {
         ArrayList<Event> dbstring = new ArrayList<Event>();
         SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_EVENTS  + " WHERE " + COLUMN_EVENT_DAY + " = " + day;
+        String query = "SELECT * FROM " + TABLE_FIXTURES  + " WHERE " + COLUMN_FIXTURE_DAY + " = " + day;
         Cursor c = db.rawQuery(query, null);
         c.moveToFirst();
 
         while (!c.isAfterLast()) {
             Event event = new Event();
-            if (c.getString(c.getColumnIndex("eventPK")) != null) {
+            if (c.getString(c.getColumnIndex("fixturePK")) != null) {
 
-                event.setEventPk(c.getInt(c.getColumnIndex("eventPK")));
-            }
-
-            if (c.getString(c.getColumnIndex("eventName")) != null) {
-                event.setEventName(c.getString(c.getColumnIndex("eventName")));
-            }
-            if (c.getString(c.getColumnIndex("eventVenue")) != null) {
-                event.setEventVenue(c.getString(c.getColumnIndex("eventVenue")));
-            }
-            if (c.getString(c.getColumnIndex("eventTime")) != null) {
-                event.setEventTime(c.getString(c.getColumnIndex("eventTime")));
-            }
-            if (c.getString(c.getColumnIndex("eventDay")) != null) {
-                event.setEventDay(c.getInt(c.getColumnIndex("eventDay")));
-            }
-            if (c.getString(c.getColumnIndex("eventDescription")) != null) {
-                event.setEventDescription(c.getString(c.getColumnIndex("eventDescription")));
-            }
-            if (c.getString(c.getColumnIndex("eventType")) != null) {
-                event.setEventType(c.getInt(c.getColumnIndex("eventType")));
-            }
-            if (c.getString(c.getColumnIndex("eventRules")) != null) {
-                event.setEventRules(c.getString(c.getColumnIndex("eventRules")));
-            }
-            if (c.getString(c.getColumnIndex("eventNotify")) != null) {
-
-                int flag = c.getInt(c.getColumnIndex("eventNotify"));
-                if (flag == 0){
-                    event.setEventNotify(false);
-                }
-                else {
-                    event.setEventNotify(true);
-                }
-
-            }
-            dbstring.add(event);
-            c.moveToNext();
-        }
-        db.close(); c.close();
-        return dbstring ;
-    }
-
-    public ArrayList<Event> getNotifiedData(int day ) {
-        ArrayList<Event> dbstring = new ArrayList<Event>();
-        SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_EVENTS  + " WHERE " + COLUMN_EVENT_DAY + " = " + day + " AND " + COLUMN_EVENT_NOTIFY + " = "  + 1 ;
-        Cursor c = db.rawQuery(query, null);
-        c.moveToFirst();
-
-        while (!c.isAfterLast()) {
-            Event event = new Event();
-            if (c.getString(c.getColumnIndex("eventPK")) != null) {
-
-                event.setEventPk(c.getInt(c.getColumnIndex("eventPK")));
+                event.setPk(c.getInt(c.getColumnIndex("fixturePK")));
             }
 
-            if (c.getString(c.getColumnIndex("eventName")) != null) {
-                event.setEventName(c.getString(c.getColumnIndex("eventName")));
+            if (c.getString(c.getColumnIndex("teamA")) != null) {
+                event.setTeamA(c.getString(c.getColumnIndex("teamA")));
             }
-            if (c.getString(c.getColumnIndex("eventVenue")) != null) {
-                event.setEventVenue(c.getString(c.getColumnIndex("eventVenue")));
+            if (c.getString(c.getColumnIndex("teamB")) != null) {
+                event.setTeamB(c.getString(c.getColumnIndex("teamB")));
             }
-            if (c.getString(c.getColumnIndex("eventTime")) != null) {
-                event.setEventTime(c.getString(c.getColumnIndex("eventTime")));
+            if (c.getString(c.getColumnIndex("venue")) != null) {
+                event.setVenue(c.getString(c.getColumnIndex("venue")));
             }
-            if (c.getString(c.getColumnIndex("eventDay")) != null) {
-                event.setEventDay(c.getInt(c.getColumnIndex("eventDay")));
+            if (c.getString(c.getColumnIndex("time")) != null) {
+                event.setTime(c.getString(c.getColumnIndex("time")));
             }
-            if (c.getString(c.getColumnIndex("eventDescription")) != null) {
-                event.setEventDescription(c.getString(c.getColumnIndex("eventDescription")));
+            if (c.getString(c.getColumnIndex("type")) != null) {
+                event.setType(c.getInt(c.getColumnIndex("type")));
             }
-            if (c.getString(c.getColumnIndex("eventType")) != null) {
-                event.setEventType(c.getInt(c.getColumnIndex("eventType")));
+            if (c.getString(c.getColumnIndex("day")) != null) {
+                event.setDay(c.getInt(c.getColumnIndex("day")));
             }
-            if (c.getString(c.getColumnIndex("eventRules")) != null) {
-                event.setEventRules(c.getString(c.getColumnIndex("eventRules")));
-            }
-            if (c.getString(c.getColumnIndex("eventNotify")) != null) {
 
-                int flag = c.getInt(c.getColumnIndex("eventNotify"));
-                if (flag == 0){
-                    event.setEventNotify(false);
-                }
-                else {
-                    event.setEventNotify(true);
-                }
-
-            }
             dbstring.add(event);
             c.moveToNext();
         }

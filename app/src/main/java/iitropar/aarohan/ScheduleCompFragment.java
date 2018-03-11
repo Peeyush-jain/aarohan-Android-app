@@ -23,8 +23,6 @@ public class ScheduleCompFragment extends Fragment{
     private ArrayList<Event> eventList ;
     private static Context context ;
     private static LinearLayoutManager layoutManager ;
-    private CheckBox checkBox ;
-    private Button register ;
     private DBHandler dba ;
     private int day ;
     private int type ;
@@ -43,7 +41,7 @@ public class ScheduleCompFragment extends Fragment{
         // Inflate the layout for this fragment
         myView = inflater.inflate(R.layout.fragment_schedule_day, container, false);
         recyclerView = myView.findViewById(R.id.recyclerView);
-        register = myView.findViewById(R.id.register);
+
         context = getContext() ;
         dba = new DBHandler(getContext(), null, null, 1);
         eventList = new ArrayList<Event>();

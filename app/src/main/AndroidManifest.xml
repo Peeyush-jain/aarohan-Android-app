@@ -70,9 +70,10 @@
             android:resource="@mipmap/ic_zeitgeist" />
 
         <activity android:name="iitropar.aarohan.AboutZeitgeist" />
+
         <activity android:name="iitropar.aarohan.ContactUS" />
         <activity android:name="iitropar.aarohan.Developers" />
-        <activity android:name="iitropar.aarohan.Sponsors" />
+        <activity android:name="iitropar.aarohan.Guidelines" />
         <activity android:name="iitropar.aarohan.MyEvents" />
         <activity
             android:name="iitropar.aarohan.Results"

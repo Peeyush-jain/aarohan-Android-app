@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_rect_shape"
+    android:layout_marginTop="10dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/teamA"
+            android:text="Chitkara University "
+            android:layout_marginTop="5dp"
+            android:textStyle="italic"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/versus"
+            android:layout_toStartOf="@+id/versus"/>
+
+        <ImageView
+            android:id="@+id/versus"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/volley_boys"
+            />
+
+        <TextView
+            android:id="@+id/teamsecond"
+            android:text="Chitkara Universitry"
+            android:layout_marginTop="5dp"
+            android:textStyle="italic"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/versus"
+            android:layout_toRightOf="@+id/versus"
+            android:layout_marginLeft="10dp"/>
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl1"
+        android:layout_marginTop="2dp">
+
+        <TextView
+            android:id="@+id/venue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Venue : LT PCSA"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/venue"
+            android:layout_alignBottom="@+id/venue"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Time: 10:00AM - 12:00 "
+            android:layout_marginRight="10dp"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+
+
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout"
+        android:textSize="16sp"
+        android:text="IIT ROPAR WINS BY 10 RUNS"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+
+
+</RelativeLayout>

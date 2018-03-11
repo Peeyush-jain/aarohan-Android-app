@@ -1,77 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:id="@+id/mainLayout"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <LinearLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorCell" >
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="S.No."
-            android:textColor="#ffffff" >
-        </TextView>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="College Name"
-            android:textColor="#ffffff" >
-        </TextView>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="Points"
-            android:textColor="#ffffff" >
-        </TextView>
+    android:background="@drawable/about">
 
 
-    </LinearLayout>
+    <Spinner
+        android:id="@+id/spinnerday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
 
-    <ListView
-        android:id="@+id/listview"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null"
-        android:layout_below="@+id/relativeLayout1"
-        android:layout_above ="@+id/refresh"
-        android:paddingBottom="2dp">
-    </ListView>
+        android:layout_toRightOf="@+id/spinnerday"
+        android:layout_marginLeft="5dp"
+        android:layout_height="wrap_content"></Spinner>
 
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/spinner"
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:layout_above="@+id/refresh"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        />
     <ProgressBar
-        android:visibility="gone"
-        android:id="@+id/progressBar"
+        android:id="@id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        />
-
+        android:layout_centerVertical="true"/>
     <Button
         android:id="@+id/refresh"
-        android:background="@color/colorPrimaryDark"
-        android:layout_alignParentBottom="true"
-        android:text="REFRESH"
-        android:textSize="20sp"
-        android:textColor="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="REFRESH"
+        android:layout_alignParentBottom="true"
 
+        />
 
 </RelativeLayout>

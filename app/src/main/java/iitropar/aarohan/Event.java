@@ -1,104 +1,100 @@
 package iitropar.aarohan;
 
 public class Event {
-    private String eventName;
-    private String eventVenue;
-    private String eventTime;
-    private String eventDescription ;
-    private boolean eventNotify ;
-    private String eventRules ;
-    private int eventDay  ; // which day
-    private int eventPk ;
+    private String teamA;
+    private String teamB;
+    private String time;
+    private String venue ;
 
-
-
-    private int eventType ; // 1 for competition 2 for concert 3 for informal
-
-
-    public Event(String eventName, String eventVenue, String eventTime, String eventDescription) {
-        this.eventName = eventName;
-        this.eventVenue = eventVenue;
-        this.eventTime = eventTime;
-        this.eventDescription = eventDescription;
-        this.eventNotify = false;
-
+    public String getDescription() {
+        return description;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private String description ;
+    private int type ;
+    private int day  ; // which day
+    private int pk ;
+
+    public String getTeamA() {
+        return teamA;
+    }
+
+    public void setTeamA(String teamA) {
+        this.teamA = teamA;
+    }
+
+    public String getTeamB() {
+        return teamB;
+    }
+
+    public void setTeamB(String teamB) {
+        this.teamB = teamB;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getVenue() {
+        return venue;
+    }
+
+    public void setVenue(String venue) {
+        this.venue = venue;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getPk() {
+        return pk;
+    }
+
+    public void setPk(int pk) {
+        this.pk = pk;
+    }
+
     public Event(){
 
     }
 
-    public int getEventType() {
-        return eventType;
+    public Event(String teamA, String teamB, String time, String venue, int type, int day) {
+        this.teamA = teamA;
+        this.teamB = teamB;
+        this.time = time;
+        this.venue = venue;
+        this.type = type;
+        this.day = day;
+
     }
-
-    public void setEventType(int eventType) {
-        this.eventType = eventType;
+    public Event(String teamA , String teamB , String time , String venue , int type , int day , String description){
+        this.teamA = teamA;
+        this.teamB = teamB;
+        this.time = time;
+        this.venue = venue;
+        this.type = type;
+        this.day = day;
+        this.description = description ;
     }
-
-    public int getEventPk() {
-        return eventPk;
-    }
-
-    public void setEventPk(int eventPk) {
-        this.eventPk = eventPk;
-    }
-
-    public int getEventDay() {
-        return eventDay;
-    }
-
-    public void setEventDay(int eventDay) {
-        this.eventDay = eventDay;
-    }
-
-    public String getEventDescription() {
-        return eventDescription;
-    }
-
-    public void setEventDescription(String eventDescription) {
-        this.eventDescription = eventDescription;
-    }
-
-    public String getEventRules() {
-        return eventRules;
-    }
-
-    public void setEventRules(String eventRules) {
-        this.eventRules = eventRules;
-    }
-
-    public boolean isEventNotify() {
-        return eventNotify;
-    }
-
-    public void setEventNotify(boolean eventNotify) {
-        this.eventNotify = eventNotify;
-    }
-
-
-    public String getEventName() {
-        return eventName;
-    }
-
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
-    }
-
-    public String getEventVenue() {
-        return eventVenue;
-    }
-
-    public void setEventVenue(String eventVenue) {
-        this.eventVenue = eventVenue;
-    }
-
-    public String getEventTime() {
-        return eventTime;
-    }
-
-    public void setEventTime(String eventTime) {
-        this.eventTime = eventTime;
-    }
-
-
 }

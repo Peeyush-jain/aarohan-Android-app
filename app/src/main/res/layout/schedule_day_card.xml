@@ -7,40 +7,46 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp">
     <TextView
-        android:id="@+id/name"
-        android:text="Third Ball Elimination"
+        android:id="@+id/teamA"
+        android:text="Chitkara University "
         android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:textSize="18sp"
+        android:textStyle="italic"
+        android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@+id/versus"
+        android:layout_toStartOf="@+id/versus"/>
+
+    <ImageView
+        android:id="@+id/versus"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/volley_boys"
+        />
 
     <TextView
-        android:id="@+id/description"
-        android:text="One Act Stage Play Competition"
-        android:textSize="10sp"
-        android:layout_below="@+id/name"
+        android:id="@+id/teamsecond"
+        android:text="Chitkara Universitry"
+        android:layout_marginTop="5dp"
+        android:textStyle="italic"
+        android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/versus"
+        android:layout_toRightOf="@+id/versus"
         android:layout_marginLeft="10dp"/>
 
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="7dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="38dp"
-        android:layout_marginRight="38dp"
-        android:button="@drawable/checkbox_selector" />
 
     <TextView
         android:id="@+id/venue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/description"
+        android:layout_below="@+id/teamA"
         android:layout_marginLeft="10dp"
         android:text="Venue : LT PCSA"
         android:layout_marginTop="10dp"
@@ -58,16 +64,5 @@
         android:layout_marginBottom="5dp"
         />
 
-    <Button
-        android:id="@+id/register"
-        android:text="Register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/checkbox"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="5dp"
-         />
+ 
 </RelativeLayout>

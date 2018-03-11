@@ -25,7 +25,7 @@ public class HomeScheduleFragment extends Fragment {
 
     View myView;
     Context mainContext ;
-    ImageView day1 , day2 , day3 , day4 ;
+    ImageView day1 , day2 , day3 ;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -49,7 +49,7 @@ public class HomeScheduleFragment extends Fragment {
         day1 = myView.findViewById(R.id.day1);
         day2 = myView.findViewById(R.id.day2);
         day3 = myView.findViewById(R.id.day3);
-        day4 = myView.findViewById(R.id.day4);
+
 
 
         day1.setOnClickListener(new View.OnClickListener() {
@@ -82,15 +82,7 @@ public class HomeScheduleFragment extends Fragment {
             }
         });
 
-        day4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mainContext,ScheduleDay.class) ;
-                intent.putExtra("dayNumber" , 4);
 
-                startActivity(intent);
-            }
-        });
 
 
 

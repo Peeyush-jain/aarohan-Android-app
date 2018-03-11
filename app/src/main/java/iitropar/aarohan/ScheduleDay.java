@@ -1,5 +1,6 @@
 package iitropar.aarohan;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,109 +11,106 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ScheduleDay extends AppCompatActivity {
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+public class ScheduleDay extends AppCompatActivity  {
     private int dayNumber ;
+    private Spinner spinner ;
+    private RecyclerView recyclerView ;
+    private static EventAdapter eventAdapter ;
+    private ArrayList<Event> eventList ;
+    private static Context context ;
+    private static LinearLayoutManager layoutManager ;
+    private DBHandler dba ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_day);
 
 
-
-
+        spinner = findViewById(R.id.spinner);
+        context = getApplicationContext() ;
         Intent intent = getIntent();
         dayNumber = intent.getExtras().getInt("dayNumber");
         if (dayNumber == 1) {
 
             getSupportActionBar().setTitle("Day 1");
+
         }
         else if (dayNumber == 2) {
 
             getSupportActionBar().setTitle("Day 2");
+
         }
         else if (dayNumber == 3) {
 
             getSupportActionBar().setTitle("Day 3");
-        }
-        else if(dayNumber == 4) {
 
-            getSupportActionBar().setTitle("Day 4");
-        }
-        getSupportActionBar().setElevation(0);
-        viewPager = findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-
-
-        tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-
-
-    }
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-
-        Bundle bundle = new Bundle();
-        bundle.putInt("eventDay", dayNumber);
-        bundle.putInt("eventType", 1);
-        ScheduleCompFragment scheduleCompFragment = new ScheduleCompFragment();
-        scheduleCompFragment.setArguments(bundle);
-
-        Bundle bundle2 = new Bundle();
-        bundle2.putInt("eventDay", dayNumber);
-        bundle2.putInt("eventType", 2);
-        ScheduleConcertsFragment scheduleConcertsFragment = new ScheduleConcertsFragment();
-        scheduleConcertsFragment.setArguments(bundle2);
-
-        Bundle bundle3 = new Bundle();
-        bundle3.putInt("eventDay", dayNumber);
-        bundle3.putInt("eventType", 3);
-        ScheduleInformalsFragment scheduleInformalsFragment = new ScheduleInformalsFragment();
-        scheduleInformalsFragment.setArguments(bundle3);
-
-
-        adapter.addFragment(scheduleCompFragment,"COMPETITIONS" );
-        adapter.addFragment(scheduleConcertsFragment, "CONCERTS");
-        adapter.addFragment(scheduleInformalsFragment, "INFORMAL");
-
-        viewPager.setAdapter(adapter);
-    }
-
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
         }
 
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.sports_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
 
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
+        recyclerView = findViewById(R.id.recyclerView);
+        dba = new DBHandler(context, null, null, 1);
+        eventList = new ArrayList<Event>();
+        eventList = dba.getDataDay(dayNumber);
+        eventAdapter = new EventAdapter(context, eventList, getSupportFragmentManager());
+        layoutManager = new LinearLayoutManager( this);
+        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(
+//                getActivity()
+//        ));
 
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(eventAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+                if (position != 0 ){
+                    eventList.clear();
+                    eventList = dba.getDataDayType(dayNumber,position);
+                    eventAdapter = new EventAdapter(context, eventList, getSupportFragmentManager());
+                    recyclerView.setAdapter(eventAdapter);
+                }
+                if (position == 0){
+                    eventList.clear();
+                    eventList = dba.getDataDay(dayNumber);
+                    eventAdapter = new EventAdapter(context, eventList, getSupportFragmentManager());
+                    recyclerView.setAdapter(eventAdapter);
+                }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+
+
     }
 
 

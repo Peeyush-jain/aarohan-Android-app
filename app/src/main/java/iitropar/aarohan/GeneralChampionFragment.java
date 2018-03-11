@@ -1,21 +1,30 @@
 package iitropar.aarohan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 
 
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +46,7 @@ import static android.content.ContentValues.TAG;
 
 public class GeneralChampionFragment extends  Fragment{
 
-    private static final String JSON_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=xAv03mdACNnqLhRMxIGywEYh86eRkfSbLxlfFj3NcX5bzLqX6y4IZE54Ya624Tgp8oWhEkOYZIBtMmEmn4QyI6Zn7u4yZt-uOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa1ZsYSbt7G4nMhEEDL32U4DxjO7V7yvmJPXJTBuCiTGh3rUPjpYM_V0PJJG7TIaKpxg3sqIEpekAzyihMj0D3XFJVzfu6jQdfU9jpet7gU6dQnzKBGNmosdqM6UAoBm0dMKiW3k6MDkf31SIMZH6H4k&lib=MbpKbbfePtAVndrs259dhPT7ROjQYJ8yx";
-
+    private static final String JSON_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=_4OOABObJuZTZzUwGSStXmLzyrTvxyLD8Jnly8OA2-1f8Rt-xtLN3vAWuNMvIHXJXJ6_Ola0O1l6kUiSgMU0xPjVZAwERd9sOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa1ZsYSbt7G4nMhEEDL32U4DxjO7V7yvmJPXJTBuCiTGh3rUPjpYM_V0PJJG7TIaKp5XydYixzJPu541uII25ITzxHHZhPxVZfignSY_QqS9yQcdBu4XHRCvcNyXohjQuH8KiW3k6MDkf31SIMZH6H4k&lib=MbpKbbfePtAVndrs259dhPT7ROjQYJ8yx";
     public GeneralChampionFragment() {
         // Required empty public constructor
     }
@@ -49,19 +57,152 @@ public class GeneralChampionFragment extends  Fragment{
     }
 
     View myView;
-    ArrayList<ChampionClass> collegeList;
-    ListView listview ;
+    private ArrayList<Event> eventList;
+    private ArrayList<Event> sortedList = new ArrayList<>();
     private SwipeRefreshLayout swipeRefreshLayout;
     private ChampionAdapter adapter ;
     private Button refreshButton ;
+    private RecyclerView recyclerView ;
+    private static EventAdapter eventAdapter ;
+    private static Context context ;
+    private static LinearLayoutManager layoutManager ;
+    private DBHandler dba ;
+    private int day = 0;
+    private int type = 0 ;
+    private Spinner spinner , spinnerDay ;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         myView = inflater.inflate(R.layout.fragment_result_championship, container, false);
-        collegeList = new ArrayList<>();
-        listview = myView.findViewById(R.id.listview);
+        eventList = new ArrayList<>();
+        recyclerView = myView.findViewById(R.id.recyclerView);
+        spinner = myView.findViewById(R.id.spinner);
+        spinnerDay = myView.findViewById(R.id.spinnerday);
+        context = getContext() ;
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getContext(),
+                R.array.sports_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter2);
+
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getContext(),
+                R.array.days_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinnerDay.setAdapter(adapter1);
+
+
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    // your code here
+                    type = position ;
+                    if (type != 0) {
+                        sortedList.clear();
+                        for (int i = 0 ; i < eventList.size() ; i++){
+                            Event event = eventList.get(i);
+                            if (day != 0 ){
+                                if (event.getType() == type && event.getDay() == day){
+                                    sortedList.add(event);
+                                }
+                            }
+                            else {
+                                if (event.getType() == type){
+                                    sortedList.add(event);
+                                }
+                            }
+                        }
+                        adapter = new ChampionAdapter(context, sortedList);
+                        recyclerView.setAdapter(adapter);
+                    }
+                    if (type == 0) {
+                        sortedList.clear();
+                        if (day == 0) {
+
+                            adapter = new ChampionAdapter(context, eventList);
+                            recyclerView.setAdapter(adapter);
+                        }
+                        else {
+                            for (int i = 0 ; i < eventList.size() ; i++){
+                                Event event = eventList.get(i);
+
+                                if (event.getDay() == day){
+                                    sortedList.add(event);
+                                }
+                            }
+                            adapter = new ChampionAdapter(context, sortedList);
+                            recyclerView.setAdapter(adapter);
+
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                    // your code here
+                }
+
+            });
+
+            spinnerDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    // your code here
+                    day = position ;
+                    if (type != 0) {
+                        sortedList.clear();
+                        for (int i = 0 ; i < eventList.size() ; i++){
+                            Event event = eventList.get(i);
+                            if (day != 0 ){
+                                if (event.getType() == type && event.getDay() == day){
+                                    sortedList.add(event);
+                                }
+                            }
+                            else {
+                                if (event.getType() == type){
+                                    sortedList.add(event);
+                                }
+                            }
+                        }
+                        adapter = new ChampionAdapter(context, sortedList);
+                        recyclerView.setAdapter(adapter);
+                    }
+                    if (type == 0) {
+                        sortedList.clear();
+                        if (day == 0) {
+
+                            adapter = new ChampionAdapter(context, eventList);
+                            recyclerView.setAdapter(adapter);
+                        }
+                        else {
+                            for (int i = 0 ; i < eventList.size() ; i++){
+                                Event event = eventList.get(i);
+
+                                if (event.getDay() == day){
+                                    sortedList.add(event);
+                                }
+                            }
+                            adapter = new ChampionAdapter(context, sortedList);
+                            recyclerView.setAdapter(adapter);
+
+                        }
+                    }
+
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                    // your code here
+                }
+            });
+
 
 
         ConnectivityManager connectivityManager = (ConnectivityManager)getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -78,6 +219,8 @@ public class GeneralChampionFragment extends  Fragment{
                     if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                             connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
                         //we are connected to a network
+                        spinner.setSelection(0);
+                        spinnerDay.setSelection(0);
                         loadData();
 
                     }
@@ -142,21 +285,25 @@ public class GeneralChampionFragment extends  Fragment{
 
                             //we have the array named hero inside the object
                             //so here we are getting that json array
-                            JSONArray collegeArray = obj.getJSONArray("Sheet1");
-                            collegeList.clear();
+                            JSONArray eventArray = obj.getJSONArray("Sheet1");
+                            eventList.clear();
                             //now looping through all the elements of the json array
-                            for (int i = 0; i < collegeArray.length(); i++) {
+                            for (int i = 0; i < eventArray.length(); i++) {
                                 //getting the json object of the particular index inside the array
-                                JSONObject collegeObject = collegeArray.getJSONObject(i);
+                                JSONObject eventObject = eventArray.getJSONObject(i);
 
                                 //creating a hero object and giving them the values from json object
-                                ChampionClass college = new ChampionClass(collegeObject.getString("College"), collegeObject.getString("Points"));
+                                Event event = new Event(eventObject.getString("TeamA"), eventObject.getString("TeamB"),eventObject.getString("Time"), eventObject.getString("Venue"),eventObject.getInt("Type"), eventObject.getInt("Day"),eventObject.getString("Description"));
 
                                 //adding the hero to herolist
-                                collegeList.add(college);
+                                eventList.add(event);
                             }
-                            ChampionAdapter adapter = new ChampionAdapter(getActivity(), collegeList);
-                            listview.setAdapter(adapter);
+                            adapter= new ChampionAdapter(context, eventList );
+                            layoutManager = new LinearLayoutManager(getContext());
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setItemAnimator(new DefaultItemAnimator());
+                            recyclerView.setAdapter(adapter);
+
 
 
 

@@ -50,10 +50,7 @@ public class UpcomingEventAdapter extends RecyclerView.Adapter<UpcomingEventAdap
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Event event = eventList.get(position);
 
-        holder.name.setText(event.getEventName());
-        holder.venue.setText(event.getEventVenue());
-        holder.time.setText(event.getEventTime());
-        holder.description.setText(event.getEventDescription());
+
 
     }
 

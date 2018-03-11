@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sports_array">
+        <item>All sports</item>
+        <item>Athletics</item>
+        <item>Badminton (Boys)</item>
+        <item>Badminton (Girls)</item>
+        <item>Basketball (Boys)</item>
+        <item>Basketball (Girls)</item>
+        <item>Chess</item>
+        <item>Cricket</item>
+        <item>Football</item>
+        <item>Table Tennis (Boys)</item>
+        <item>Table Tennis (Girls)</item>
+        <item>VolleyBall (Boys)</item>
+        <item>VolleyBall (Girls)</item>
+    </string-array>
+</resources>

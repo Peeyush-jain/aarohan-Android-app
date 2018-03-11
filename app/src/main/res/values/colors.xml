@@ -12,4 +12,18 @@
 	<color name="list_divider">#dedede</color>
     <color name="colorCell">#015093</color>
     <color name="darkPink">#C71585</color>
+    <color name="yellow"> #f39c12</color>
+    <color name="orange">#d35400</color>
+    <color name="pink">#FF69B4</color>
+    <color name="darkpink">#C71585</color>
+    <color name="skyblue"> #3498db</color>
+    <color name="red"> 	#FF0000</color>
+    <color name="lightgreen">#98FB98</color>
+    <color name = "brown"> 	#D2691E</color>
+    <color name="darkgreen"> 	#6B8E23</color>
+    <color name="darkblue"> #9400D3 </color>
+    <color name="lightishgreen">#ADFF2F</color>
+
+
+
 </resources>

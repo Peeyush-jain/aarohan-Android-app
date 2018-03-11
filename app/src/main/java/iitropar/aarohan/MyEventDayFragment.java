@@ -41,32 +41,7 @@ public class MyEventDayFragment extends Fragment{
         myView = inflater.inflate(R.layout.fragment_my_event_day, container, false);
         recyclerView = myView.findViewById(R.id.myEventRecyclerView);
 
-        context = getContext() ;
-        dba = new DBHandler(getContext(), null, null, 1);
-        eventList = new ArrayList<Event>();
-        day = getArguments().getInt("eventDay");
 
-
-        eventList = dba.getNotifiedData(day);
-        if (eventList.size() == 0){
-            myView = inflater.inflate(R.layout.blank, container, false);
-            TextView text = myView.findViewById(R.id.blankText);
-            text.setText("Click on the bell icon inside schedule to add it in your event List");
-            setHasOptionsMenu(true);
-        }
-        else {
-            eventAdapter = new UpcomingEventAdapter(context, eventList,getActivity().getSupportFragmentManager());
-
-            layoutManager = new LinearLayoutManager( getActivity());
-            recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(
-//                getActivity()
-//        ));
-
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(eventAdapter);
-
-        }
 
 
 
