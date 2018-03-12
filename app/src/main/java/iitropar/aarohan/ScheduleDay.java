@@ -64,9 +64,9 @@ public class ScheduleDay extends AppCompatActivity  {
         }
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.sports_array, android.R.layout.simple_spinner_item);
+                R.array.sports_array, R.layout.spinner_item);
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
@@ -87,6 +87,7 @@ public class ScheduleDay extends AppCompatActivity  {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // your code here
+
                 if (position != 0 ){
                     eventList.clear();
                     eventList = dba.getDataDayType(dayNumber,position);

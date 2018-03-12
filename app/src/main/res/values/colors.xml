@@ -20,9 +20,10 @@
     <color name="red"> 	#FF0000</color>
     <color name="lightgreen">#98FB98</color>
     <color name = "brown"> 	#D2691E</color>
-    <color name="darkgreen"> 	#6B8E23</color>
+    <color name="darkgreen"> #339933</color>
     <color name="darkblue"> #9400D3 </color>
     <color name="lightishgreen">#ADFF2F</color>
+    <color name="barcolor">#00cccc</color>
 
 
 

@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:src = "@drawable/day1"/>
+        android:src = "@drawable/day_1"/>
 
     <ImageView
         android:id="@+id/day2"

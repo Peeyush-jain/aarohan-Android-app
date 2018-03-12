@@ -5,23 +5,8 @@
     android:background="@drawable/about">
 
 
-    <Spinner
-        android:id="@+id/spinnerday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></Spinner>
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/spinnerday"
-        android:layout_marginLeft="5dp"
-        android:layout_height="wrap_content"></Spinner>
-
-
-
 
     <android.support.v7.widget.RecyclerView
-        android:layout_below="@+id/spinner"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,9 +26,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="REFRESH"
+        android:fontFamily="@font/roboto_condensed_regular"
         android:background="@color/barcolor"
         android:textStyle="bold"
-        android:fontFamily="@font/roboto_condensed_regular"
         android:layout_alignParentBottom="true"
 
         />

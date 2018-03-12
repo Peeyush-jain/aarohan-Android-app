@@ -2,6 +2,7 @@ package iitropar.aarohan;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,14 +28,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView teamA , teamB , venue , time ;
-
+        public ImageView versus ;
         public ViewHolder(View view) {
             super(view);
             teamA =  view.findViewById(R.id.teamA);
             venue = view.findViewById(R.id.venue);
             time =  view.findViewById(R.id.time);
             teamB = view.findViewById(R.id.teamsecond);
-
+            versus = view.findViewById(R.id.versus);
             dba = new DBHandler(context, null, null, 1);
         }
     }
@@ -60,7 +62,43 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         holder.venue.setText(event.getVenue());
         holder.time.setText(event.getTime());
         holder.teamB.setText(event.getTeamB());
-
+        if (event.getType() == 1){ // athletics
+            Drawable drawable = context.getResources().getDrawable(R.drawable.ath) ;
+            holder.versus.setImageDrawable(drawable);
+        }
+        else if (event.getType() == 2){ // badminton boys
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bad));
+        }
+        else if (event.getType() == 3){ // badminton girls
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bad));
+        }
+        else if (event.getType() == 4){ // basketball boys
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bask));
+        }
+        else if (event.getType() == 5){ // basketball boys
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bask));
+        }
+        else if (event.getType() == 6){ // chess
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.ches));
+        }
+        else if (event.getType() == 7){ // cricket
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.crick));
+        }
+        else if (event.getType() == 8){ // football
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.foot));
+        }
+        else if (event.getType() == 9){ // tt boys
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.tt));
+        }
+        else if (event.getType() == 10){ // tt girls
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.tt));
+        }
+        else if (event.getType() == 11){ // volley boys
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.volley_boys));
+        }
+        else if (event.getType() == 12){ // volley girls
+            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.volley_boys));
+        }
     }
 
     @Override
@@ -68,10 +106,4 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         return eventList.size();
     }
 
-
-
-
-
-
-  
 }

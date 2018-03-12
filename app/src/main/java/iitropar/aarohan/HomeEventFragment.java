@@ -27,8 +27,8 @@ public class HomeEventFragment extends Fragment {
     private static UpcomingEventAdapter upcomingEventAdapter;
     private static LinearLayoutManager layoutManager;
     CarouselView customCarouselView;
-    int NUMBER_OF_PAGES = 6;
-    int[] sampleImages = {R.drawable.i1, R.drawable.i2, R.drawable.i3,R.drawable.p5 ,R.drawable.p6 , R.drawable.p10 };
+    int NUMBER_OF_PAGES = 4;
+    int[] sampleImages = {R.drawable.i1, R.drawable.i2,R.drawable.p5  , R.drawable.p10 };
 
     ImageListener imageListener = new ImageListener() {
         @Override

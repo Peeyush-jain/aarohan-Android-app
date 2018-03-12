@@ -2,8 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/round_rect_shape"
+    android:background="@color/transparent"
     android:layout_marginTop="10dp"
+
     android:paddingLeft="5dp"
     android:paddingRight="5dp">
 
@@ -15,8 +16,9 @@
         <TextView
             android:id="@+id/teamA"
             android:text="Chitkara University "
+            android:fontFamily="@font/roboto_condensed_regular"
             android:layout_marginTop="5dp"
-            android:textStyle="italic"
+
             android:textSize="25sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,9 +40,9 @@
 
         <TextView
             android:id="@+id/teamsecond"
+            android:fontFamily="@font/roboto_condensed_regular"
             android:text="Chitkara Universitry"
             android:layout_marginTop="5dp"
-            android:textStyle="italic"
             android:textSize="25sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,6 +71,7 @@
         <TextView
             android:id="@+id/venue"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/roboto_condensed_regular"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="Venue : LT PCSA"
@@ -79,6 +82,7 @@
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_condensed_regular"
             android:layout_alignBaseline="@+id/venue"
             android:layout_alignBottom="@+id/venue"
             android:layout_alignParentEnd="true"
@@ -97,7 +101,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relativeLayout"
-        android:textSize="16sp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textSize="18sp"
         android:text="IIT ROPAR WINS BY 10 RUNS"
         android:textStyle="bold"
         android:layout_marginLeft="10dp"

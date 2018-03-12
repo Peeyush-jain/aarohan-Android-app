@@ -40,7 +40,7 @@ public class Results extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
 
-        adapter.addFragment(new GeneralChampionFragment() ,"Championship" );
+        adapter.addFragment(new GeneralChampionFragment() ,"Daywise Winner" );
         adapter.addFragment(new EventWinnerFragment(), "Event Winners");
 
 

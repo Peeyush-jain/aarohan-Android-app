@@ -2,67 +2,97 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/round_rect_shape"
     android:layout_marginTop="10dp"
     android:paddingLeft="5dp"
-    android:paddingRight="5dp">
-    <TextView
-        android:id="@+id/teamA"
-        android:text="Chitkara University "
-        android:layout_marginTop="5dp"
-        android:textStyle="italic"
-        android:textSize="25sp"
-        android:layout_width="wrap_content"
+    android:paddingRight="5dp"
+    android:background="@color/transparent"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/teamA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="25sp"
+            android:layout_toLeftOf="@+id/versus"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:layout_toStartOf="@+id/versus"
+            android:text="Chitkara University " />
+
+        <ImageView
+            android:id="@+id/versus"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/volley_boys"
+            android:background="@color/transparent"
+            />
+
+        <TextView
+            android:id="@+id/teamsecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/versus"
+            android:layout_toRightOf="@+id/versus"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:text="LPU"
+            android:textSize="25sp"
+            />
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toLeftOf="@+id/versus"
-        android:layout_toStartOf="@+id/versus"/>
+        android:layout_below="@+id/rl1"
+        android:layout_marginTop="2dp">
 
-    <ImageView
-        android:id="@+id/versus"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/volley_boys"
-        />
+        <TextView
+            android:id="@+id/venue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Venue : LT PCSA"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/teamsecond"
-        android:text="Chitkara Universitry"
-        android:layout_marginTop="5dp"
-        android:textStyle="italic"
-        android:textSize="25sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/versus"
-        android:layout_toRightOf="@+id/versus"
-        android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/venue"
+            android:text="Time: 10:00AM - 12:00 "
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:layout_marginLeft="10dp"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
 
 
-    <TextView
-        android:id="@+id/venue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/teamA"
-        android:layout_marginLeft="10dp"
-        android:text="Venue : LT PCSA"
-        android:layout_marginTop="10dp"
-        android:textSize="14sp" />
-    <TextView
-        android:id="@+id/time"
-        android:text="Time: 10:00AM - 12:00 "
-        android:textSize="14sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/venue"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="5dp"
-        />
 
- 
+
+
 </RelativeLayout>

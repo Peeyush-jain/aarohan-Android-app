@@ -83,16 +83,16 @@ public class GeneralChampionFragment extends  Fragment{
         spinnerDay = myView.findViewById(R.id.spinnerday);
         context = getContext() ;
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getContext(),
-                R.array.sports_array, android.R.layout.simple_spinner_item);
+                R.array.sports_array, R.layout.spinner_item);
         // Specify the layout to use when the list of choices appears
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(R.layout.spinner_dropdown);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter2);
 
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getContext(),
-                R.array.days_array, android.R.layout.simple_spinner_item);
+                R.array.days_array, R.layout.spinner_item);
         // Specify the layout to use when the list of choices appears
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter1.setDropDownViewResource(R.layout.spinner_dropdown);
         // Apply the adapter to the spinner
         spinnerDay.setAdapter(adapter1);
 

@@ -1,72 +1,78 @@
 package iitropar.aarohan;
 
-import java.util.ArrayList;
-import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.support.design.widget.BottomSheetDialogFragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 
 
-public class EventWinnerAdapter extends BaseAdapter {
-    public ArrayList<EventWinnerModel> winnerList;
-    Activity activity;
+public class EventWinnerAdapter extends RecyclerView.Adapter<EventWinnerAdapter.ViewHolder>  {
 
-    public EventWinnerAdapter(Activity activity, ArrayList<EventWinnerModel> winnerList) {
-        super();
-        this.activity = activity;
-        this.winnerList = winnerList;
-    }
+    private Context context;
+    private ArrayList<EventWinnerModel> eventList;
+    private FragmentManager fragmentManager ;
+    private DBHandler dba ;
 
-    @Override
-    public int getCount() {
-        return winnerList.size();
-    }
 
-    @Override
-    public Object getItem(int position) {
-        return winnerList.get(position);
-    }
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView name , first , second , third;
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 
-    private class ViewHolder {
-        TextView eventName;
-        TextView winner1;
-        TextView winner2;
-        TextView winner3 ;
-
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        ViewHolder holder;
-        LayoutInflater inflater = activity.getLayoutInflater();
-
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.fragment_event_winner_card, null);
-            holder = new ViewHolder();
-            holder.eventName =  convertView.findViewById(R.id.eventName);
-            holder.winner1 =  convertView.findViewById(R.id.winner1);
-            holder.winner2 = convertView.findViewById(R.id.winner2);
-            holder.winner3 = convertView.findViewById(R.id.winner3);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+        public ViewHolder(View view) {
+            super(view);
+            name = view.findViewById(R.id.name);
+            first = view.findViewById(R.id.first);
+            second = view.findViewById(R.id.second);
+            third = view.findViewById(R.id.third);
+            dba = new DBHandler(context, null, null, 1);
         }
-
-        EventWinnerModel item = winnerList.get(position);
-        holder.eventName.setText(item.getEventName());
-        holder.winner1.setText(item.getWinner1());
-        holder.winner2.setText(item.getWinner2());
-        holder.winner3.setText(item.getWinner3());
-        return convertView;
     }
+
+    public EventWinnerAdapter(Context context, ArrayList<EventWinnerModel> eventList ){
+        this.context = context;
+        this.eventList = eventList;
+        this.fragmentManager = fragmentManager ;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.event_winner_fragment_card, parent, false);
+
+        return new ViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        final EventWinnerModel event = eventList.get(position);
+        // setting the value of perameter
+       holder.first.setText(event.getWinner1());
+       holder.name.setText(event.getEventName());
+       holder.second.setText(event.getWinner2());
+       holder.third.setText(event.getWinner3());
+    }
+
+    @Override
+    public int getItemCount() {
+        return eventList.size();
+    }
+
+
+
+
+
+
 
 }

@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,11 +45,11 @@ public class EventWinnerFragment extends  Fragment{
     public EventWinnerFragment() {
         // Required empty public constructor
     }
-    private static final String JSON_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=2GZO6KPz_KsdbJowQWfiW5R6q8ku7bEqL4V4S-OtLcY_aINDjdnc35iZ2Luygfv3-YCqRmyPTfNdhyyz88NOFd0ENGZif7eEOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa1ZsYSbt7G4nMhEEDL32U4DxjO7V7yvmJPXJTBuCiTGh3rUPjpYM_V0PJJG7TIaKp3TA3SM5cVkTkHEkaKT9jpDfy_WdZZoJ24Bg-e54TOXsiHbngzp7RZdd3r3VBP8_YcKiW3k6MDkf31SIMZH6H4k&lib=MbpKbbfePtAVndrs259dhPT7ROjQYJ8yx";
-
+    private static final String JSON_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=_Flg0sJcDYCt9bxxR9lR7h8N4BjzZJFMeBwWBN08S--hk1oZEfXQksksGLn4rngnwNfFrVSlLHxUnzRxtAo7zfM30nGv-JU_OJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa1ZsYSbt7G4nMhEEDL32U4DxjO7V7yvmJPXJTBuCiTGh3rUPjpYM_V0PJJG7TIaKpwabY76-ym4KTZGlawn9n9m-A3EjxKiEwhqMSAQNzj7hlMACkaDAfg4yguR9iXXDcsKiW3k6MDkf31SIMZH6H4k&lib=MbpKbbfePtAVndrs259dhPT7ROjQYJ8yx";
     ArrayList<EventWinnerModel> winnerList;
-    ListView listview ;
+    private RecyclerView recyclerView ;
     private Button refreshButton ;
+    private static LinearLayoutManager layoutManager ;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +59,10 @@ public class EventWinnerFragment extends  Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        myView = inflater.inflate(R.layout.fragment_result_winner, container, false);
+        myView = inflater.inflate(R.layout.fragment_event_winner, container, false);
         winnerList = new ArrayList<>();
 
-        listview = myView.findViewById(R.id.listview);
+        recyclerView = myView.findViewById(R.id.recyclerView);
 
 
         ConnectivityManager connectivityManager = (ConnectivityManager)getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -146,13 +149,16 @@ public class EventWinnerFragment extends  Fragment{
                                 JSONObject eventObject = collegeArray.getJSONObject(i);
 
                                 //creating a hero object and giving them the values from json object
-                                EventWinnerModel event = new EventWinnerModel(eventObject.getString("Name"), eventObject.getString("First"),eventObject.getString("Sec"),eventObject.getString("Third"));
+                                EventWinnerModel event = new EventWinnerModel(eventObject.getString("Name"), eventObject.getString("Winner"),eventObject.getString("Sec"),eventObject.getString("Third"));
 
                                 //adding the hero to herolist
                                 winnerList.add(event);
                             }
-                            EventWinnerAdapter adapter = new EventWinnerAdapter(getActivity(), winnerList);
-                            listview.setAdapter(adapter);
+                            EventWinnerAdapter adapter = new EventWinnerAdapter(getContext(), winnerList);
+                            layoutManager = new LinearLayoutManager(getContext());
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setItemAnimator(new DefaultItemAnimator());
+                            recyclerView.setAdapter(adapter);
 
 
 

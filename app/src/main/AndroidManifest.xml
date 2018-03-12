@@ -34,7 +34,10 @@
             android:name="iitropar.aarohan.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="iitropar.aarohan.ScheduleDay" />
+
+        <activity android:name="iitropar.aarohan.ScheduleDay"
+            android:theme="@style/MyActionBar"
+            android:parentActivityName=".MainActivity"/>
 
         <receiver
             android:name="iitropar.aarohan.MyReceiver"
@@ -68,6 +71,9 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_zeitgeist" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity android:name="iitropar.aarohan.AboutZeitgeist" />
 
@@ -75,9 +81,12 @@
         <activity android:name="iitropar.aarohan.Developers" />
         <activity android:name="iitropar.aarohan.Guidelines" />
         <activity android:name="iitropar.aarohan.MyEvents" />
+
         <activity
             android:name="iitropar.aarohan.Results"
-            android:parentActivityName="iitropar.aarohan.MainActivity" />
+            android:parentActivityName="iitropar.aarohan.MainActivity"
+            android:theme="@style/MyActionBar"
+            />
         <activity
             android:name="iitropar.aarohan.Anouncement"
             android:label="@string/title_activity_anouncement"
