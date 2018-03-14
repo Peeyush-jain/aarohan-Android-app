@@ -1,14 +1,18 @@
 package iitropar.aarohan;
 
+import android.*;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 public class ContactUS extends AppCompatActivity {
-
+    private static int MY_PERMISSIONS_REQUEST_CALL_PHONE = 2 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,7 @@ public class ContactUS extends AppCompatActivity {
         View.OnClickListener PhoneOnClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 TextView text = (TextView) v;
                 Intent phone = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + text.getText().toString()));
 //                phone.putExtra(Intent.EXTRA_PHONE_NUMBER, text.getText().toString());
