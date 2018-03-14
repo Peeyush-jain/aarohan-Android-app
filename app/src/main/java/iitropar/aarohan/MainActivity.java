@@ -109,8 +109,10 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.developers) {
-            Intent intent = new Intent(this, Developers.class);
-            startActivity(intent);
+            String url = "https://software-community.github.io/" ;
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
 
         } else if (id == R.id.hospitality) {
             AssetManager assetManager = getAssets();
