@@ -3,6 +3,8 @@ package iitropar.aarohan;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
@@ -11,7 +13,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -87,8 +96,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
 
-        }
-        else if (id == R.id.results) {
+        } else if (id == R.id.results) {
             Intent intent = new Intent(this, Results.class);
             startActivity(intent);
 
@@ -104,10 +112,50 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, Developers.class);
             startActivity(intent);
 
+        } else if (id == R.id.hospitality) {
+            AssetManager assetManager = getAssets();
+
+            InputStream in = null;
+            OutputStream out = null;
+            File file = new File(getFilesDir(), "book.pdf");
+            try
+            {
+                in = assetManager.open("book.pdf");
+                out = openFileOutput(file.getName(), Context.MODE_WORLD_READABLE);
+
+                copyFile(in, out);
+                in.close();
+                in = null;
+                out.flush();
+                out.close();
+                out = null;
+            } catch (Exception e)
+            {
+                Log.e("tag", e.getMessage());
+            }
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(
+                    Uri.parse("file://" + getFilesDir() + "/book.pdf"),
+                    "application/pdf");
+
+            startActivity(intent);
+
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void copyFile(InputStream in, OutputStream out) throws IOException
+    {
+        byte[] buffer = new byte[1024];
+        int read;
+        while ((read = in.read(buffer)) != -1)
+        {
+            out.write(buffer, 0, read);
+        }
     }
 
 

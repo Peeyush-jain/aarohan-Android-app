@@ -294,9 +294,12 @@ public class GeneralChampionFragment extends  Fragment{
 
                                 //creating a hero object and giving them the values from json object
                                 Event event = new Event(eventObject.getString("TeamA"), eventObject.getString("TeamB"),eventObject.getString("Time"), eventObject.getString("Venue"),eventObject.getInt("Type"), eventObject.getInt("Day"),eventObject.getString("Description"));
-
+                                String description = eventObject.getString("Description");
                                 //adding the hero to herolist
-                                eventList.add(event);
+                                if (!description.equals("")){
+                                    eventList.add(event);
+                                }
+
                             }
                             adapter= new ChampionAdapter(context, eventList );
                             layoutManager = new LinearLayoutManager(getContext());

@@ -9,7 +9,7 @@ public class AboutZeitgeist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_zeitgeist);
-        getSupportActionBar().setTitle("About Zeitgeist");
+        getSupportActionBar().setTitle("About Aarohan");
 
         // TODO:
         // Make poster for about zeitgeist

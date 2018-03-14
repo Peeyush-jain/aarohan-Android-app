@@ -14,13 +14,33 @@
 
     </Spinner>
 
-
+    <ProgressBar
+        android:id="@id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
     <android.support.v7.widget.RecyclerView
         android:layout_below="@+id/spinner"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
+        android:layout_above="@+id/refresh"
+        android:paddingBottom="5dp"
         />
+
+    <Button
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REFRESH"
+        android:background="@color/barcolor"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:layout_alignParentBottom="true"
+
+        />
+
 
 </RelativeLayout>
