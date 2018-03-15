@@ -183,34 +183,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.hospitality) {
-            AssetManager assetManager = getAssets();
-
-            InputStream in = null;
-            OutputStream out = null;
-            File file = new File(getFilesDir(), "book.pdf");
-            try
-            {
-                in = assetManager.open("book.pdf");
-                out = openFileOutput(file.getName(), Context.MODE_WORLD_READABLE);
-
-                copyFile(in, out);
-                in.close();
-                in = null;
-                out.flush();
-                out.close();
-                out = null;
-            } catch (Exception e)
-            {
-                Log.e("tag", e.getMessage());
-            }
-
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(
-                    Uri.parse("file://" + getFilesDir() + "/book.pdf"),
-                    "application/pdf");
-
+            Intent intent = new Intent(this, Guidelines.class);
             startActivity(intent);
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
