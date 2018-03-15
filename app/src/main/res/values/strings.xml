@@ -12,4 +12,167 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_anouncement">Anouncement</string>
+    <string name="rules_athletics">
+        Event Head - Deepak - 6280015964\n
+Co Heads - Ankit - 8146682029 , Vishal Lunia - 8094156214\n\n
+        1. The competition shall be conducted under the International Association of Athletics Federations Rules.\n
+        2. Any team will not be entitled to enter more than two competitors plus one reserve player per event.\n
+        3. As far as possible, changes, if any, should be intimated fifteen minutes before the first call for that event is given.\n
+        4. An athlete can participate in a maximum of three events.\n
+        5. The corresponding points for an event in Aarohan Athletics Championship will be as follows:\n
+        \t\t 1st Position: 5 points\n
+        \t\t 2nd Position: 3 points\n
+        \t\t 3rd Position: 2 points\n
+        \t\t 4th Position: 1 point.\n
+        6. Athletics Championship trophy will be awarded to the team scoring maximum points.\n
+        7. In case of a tie for an individual event for positions and Athletics Championship,the tie will be resolved as per International Association of Athletics Federations rules.\n
+        8. Certificates will be awarded to the first three places in all the athletics events.\n\n
+    </string>
+
+
+    <string name="rules_badminton">
+        Event Head - Nawed Diwan (8847497737) , Diksha Bansal (7340901480)\n
+        Co Heads - Nikhil (9407007452) , Radhika Wadhawan (7589330015) \n\n
+1. The competition shall be conducted under the International Badminton\n
+        2. Federation rules as adopted from time to time by the Badminton Association of India, unless otherwise modified.\n
+        3. The tournament will be conducted on the lines of Inter State Badminton Championship.Ties will be separately decided according to the pattern given below.\n\n
+        4. For Boys : \n
+        - The tie shall be decided by the combined result of 3 singles and 2 doubles.\n
+        - Result of a tie, however, can be declared when either of the competing teams wins 3 matches.\n
+        - Result of best of three sets (each set of 21 points).\n
+        - The order of events shall be as follows : First Singles/Second Singles/First Doubles/Third Singles/Second Doubles\n
+        - The number of players representing any team in a team can be a maximum of 5 members.\n\n
+        5. For Girls : \n
+        - The tie shall be decided by the combined result of 2 singles and 1 double.\n
+        - Result of a tie, however can be declared when either of the competing teams wins 2 matches.\n
+        - The order of events shall be as follows : First Singles - First Doubles - Second Singles\n
+        - The number of players representing any team in a team can be a maximum of 3 members.\n\n
+        6. Tie will be resolved by successively applying the following criteria:\n
+- Individual matches won/individual matches lost.\n
+- Games won by the team/games lost by the team.\n
+- Points for/Points against.\n\n
+7. The tally for all the matches played in the league fixture will be considered.\n\n
+    </string>
+
+    <string name="rules_basketball">
+        Event Head – Shreshtha Gothalyan (9417707465) , Garima Gupta  (9877615377)\n
+        Co Head - Mayank Raj (9079350330)\n\n
+        1. The tournament will be conducted according to the International Basketball Federation Rules as adopted from time to time by the Indian Basketball Federation unless otherwise modified.\n
+        2. The number of players representing any team will not be more than 10 and not more than 10 certificates be awarded to a team.\n
+        3. During matches if the score is same after the end of the scheduled time, Basketball Federation Rules will be applied, i.e. the game shall continue with as many extra periods of 5 minutes as is necessary to break the tie.\n
+        4. On completion of the league matches, if two or more teams are on same points,then the tie shall be resolved as given below.\n
+        5. If two teams are tied, head-to-head wins among the teams will be considered to break the tie.\n
+        6. If more than two teams are equal in placing, a second classification will be established, taking into account only the results of the games between the teams that have tied.\n
+        7. If there are still teams tied alter the second classification, the basket average will be used to determine the placing, taking into account only the results of the games between the teams that tied.\n
+        8. If there are still teams tied, the placing will be determined using the goal average from the results of all their games played in the group\n\n
+    </string>
+
+
+    <string name="rules_chess">
+        Event Head – Guggilla Venugopal (9676426492)\n
+        Co Head - Trinadth Reddy (9592214860)\n\n
+        1. Chess competition will be played in accordance with the FIDE laws of chess.\n
+        2. It is a team event and team need to comprise of 5 players must for a team , extra player will not be allowed in any case\n
+        3. Duration of match will be one hour for each player , totally two hours.\n\n
+    </string>
+
+    <string name="rules_cricket">
+
+        Event Head - Yash Ranjan (7347332900)\n
+        Co Head - Jashan Sanger (9988069842)\n\n
+        1. Matches shall be played according to the ICC rules in force, as adopted from time to time by the Board of Control for Cricket in India, unless otherwise modified.\n
+        2. All the matches will be conducted on league cum knock out basis and each side is allowed to complete 15 overs unless the opposing team is dismissed earlier.The final will be of 20 overs.\n
+        3. Each bowler can bowl a maximum of 3 overs in league matches and 4 overs in finals.\n
+        4. The bowling team is given 80 minutes to complete its quota of 15 overs. The penalty for every short over will be decided by the all captains prior to the meet.\n
+        5. If there is a tie, the team having the better run rate shall be considered for deciding placing.\n
+        6. The umpires are empowered to rearrange the number of overs by each side in the event of a delayed start or if play is suspended. The number of overs for the team batting second will not be reduced if the team batting first has been dismissed in fewer than agreed number of overs.\n
+        7. Each team shall submit a list of players not exceeding sixteen who may participate in the tournament. Not more than 16 certificates shall be awarded to a team.\n
+        8. Rules regarding the postponement of cricket match due to rain: When rain affects play during the innings of the first team itself, the match will be continued, from where it has been discontinued. The umpires will decide whether the ground is fit for play or not.\n
+        9. When rain affects the play during the innings of the second team batting and if the team batting second has not yet batted for half the number of overs, the match will be manned as in “i”.\n
+        10. If the team batting second has batted for more than half the overs and if further play is not possible on the same day, the winner is decided to be the team with better scoring rate at the particular point where and when the second team stopped batting.\n\n
+    </string>
+
+
+    <string name="rules_football">
+        Event Head – Pranjal SinghBisht(78950662200)\n
+        Co Head - Ashish Swami (8284020226)\n\n
+        1. Matches shall be played according to the rules of FIFA as adopted from time to time by the All India Football Federation unless otherwise modified.\n
+        2. The duration of each match shall be 70 minutes (35-5-35). During the leaguestage, after the expiry of play-time, if the tie still persists, the points shall be shared equally.\n
+        3. Every team should submit a list of players, not exceeding 16, who may participate in the tournament. Not more than 16 certificates shall be awarded to a team.\n
+        4. No extra time will be given in knock out stage of football matches even if the match is drawn. There will be direct penalty shootout to decide the winner.\n
+        5. The yellow cards given during the league stages would not be counted in knock out stages.\n
+        6. A team will be awarded 3 points for a win, 1 for draw, and zero for a lost match.\n
+        7. In case of tie, goal differences (i.e. Goals FOR minus Goals AGAINST) of all the matches played by the team shall be considered. If the tie still persists, the number of goals ‘FOR’ through out the tournament shall be considered: If tie still persists, number of goals ‘AGAINST’ through out the tournament shall be considered.If tie still persists then head to head matches will be considered\n\n
+    </string>
+
+    <string name="rules_tabletennis">
+
+        Event Head – Sarthak Srivastava (8115648893) , Pooja Sharma (9501975579) \n
+        Co Head - Vighanesh Sharma (9796466366) , Akansha Singh (8079061397)\n\n
+        1. The rules of the tournament of the International Table Tennis Federation asadopted from time to time by the Table Tennis Federation of India shall apply unless otherwise modified.\n
+        2. Men’s Matches will be held on the basis of five singles.\n
+        3. Women’s Matches will consist of two singles and one doubles.\n
+        4. For Men: \n
+        - The order of play shall be as follows : Three players on one side are numbered A, B and C and the three players on the other side are numbered X, Y and Z. Order of play shallbe:\n
+        \t\t\t A vs. X \n
+        \t\t\t B vs. Y\n
+        \t\t\t C vs. Z\n
+        \t\t\t A vs. Y\n
+        \t\t\t B vs. X\n\n
+        5. For Women: \n
+        - The order of play shall be as follows : First match conducted will be singles (best of five) followed by a doubles and then the third match which shall be again singles.\n
+        - Both the teams shall submit the names of the players playing the respective matches prior to the game.\n\n
+        6. Men:The result of the tie shall be declared when either of the team wins three matches. The number of players representing any team shall not be less than three or more than four. Only four certificates shall be awarded to a winning team.\n\n
+        7. Women:The number of players representing any team shall not be less than two or more than three.Only four certificates shall be awarded to a winning team.\n\n
+        8. Each single shall be played on best of five games basis with each game of 11 points.\n
+        9. The number of players representing a team shall be three or can be two in women category.\n
+        10. Three certificates will be awarded to a team.\n
+        11. Tie will be resolved by successfully applying the following criteria.\n
+        - Individual Matches Won/Individual Matches Lost\n
+        - Games won by the Team/Games lost by the team\n
+        - Points for/Points against\n
+        12. The score standings, when the match is decided, shall be considered for the calculations indicated above.The tally for all matches played among the tied teams in the league fixture will be considered.\n\n
+    </string>
+    <string name="rules_volleyball">
+
+        Event Head – RavinderPal Singh (9041722906) , Nitu Meena (9646520190) \n
+        Co Head - Rahul Bharti (9915405007) , ManpreetKaur (8872374649)\n\n
+        1. The rules of the International Volleyball Federation [FIVB) as adopted from time to time by the Volleyball Federation of India (VFI) shall be followed unless otherwise modified.\n
+        2. Every team shall submit a list of players, not exceeding 10. Not more than 10 certificates shall be awarded to a team.\n
+        3. The tournament shall be played on league basis. All the matches shall be played on the bestof 3 sets.\n
+        4. Thefollowing points system will be followed for the matches played on league basis.\n
+        - Match won : 3 points\n
+        - Match lost : 0 point\n
+        - Technical forfeit : 1 point\n
+        5. Any team refusing to play a match without proper justification will be eliminated from the competition and the results of the matches already played will be cancelled.\n
+        6. In case of teams having equal points the following equation will determine the ranking.\n
+        EXAMPLE: C = A/B\n
+        A Team B Team\n
+        A - Total number of sets won 11 9\n
+        B - Total number of sets lost 4 3\n
+        C - Ratio of sets is 11/4=2.75 , 9/3 = 3.0\n
+        Team B is having highest ratio = 3.0\n
+        The team with higher ratio “C” will be ranked higher. If the tie still remains,then the following system will be applied.\n
+        A Team B Team\n
+        A-Total number of winning points 120 90\n
+        B-Total number of lost points 90 125\n
+        Z = A/B 120/90=1.33 90/125=0.72\n
+        The team with higher ratio “Z” will be ranked higher. If the tie still remains then the following procedure will be adopted.\n\n
+        7. Two teams involved: precedence will be given to the team winning that match,in which they played against each other. In no circumstances extra match will be played to determine which team ranked higher. The tally of all matches played in the league fixture will be considered.\n\n
+    </string>
+
+
+
+    <string name="about">
+
+Aarohan is the annual sports fest of Indian Institute of Technology, Ropar, one among the most reputed institutes in the country. Since its inception in 2016, Aarohan has unceasingly progressed each year. Spread over a period of three days, Aarohan, IIT Ropar’s flagship sporting fest, is nothing short of a sporty pageant.\n\n
+
+Aarohan attracts a wide spectrum of the youth from all over the north India by providing excellent organisational infrastructure facilities and motivation to enable students achieve the zenith of their respective sports performances. Having witnessed over 400 participants and an impressive start and inaugural by former Hockey Olympian Sandeep Singh in its sophomore edition, the fest has provided students from different colleges and institutes an opportunity to participate and explore.\n\n
+
+The fest incorporates a wide range of outdoor as well as indoor sports activities like cricket, badminton, volleyball, basketball, football, tennis and athletics events. Every year it is our ardent desire to make the fest bigger and better and with the same vision, the 3 days Fest is scheduled to kick start from 16 March 2018. In its third edition, Aarohan’18 promises to take a new avatar and bring up the competition to a whole new level of a competition which encompasses variety of tournaments with an aim to create synergy in the latest edition of fest.\n\n
+
+Come, feel the adrenaline rush as you battle it out to be crowned the best of the best.
+
+    </string>
+
 </resources>

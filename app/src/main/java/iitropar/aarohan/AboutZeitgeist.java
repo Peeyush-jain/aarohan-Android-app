@@ -11,7 +11,6 @@ public class AboutZeitgeist extends AppCompatActivity {
         setContentView(R.layout.activity_about_zeitgeist);
         getSupportActionBar().setTitle("About Aarohan");
 
-        // TODO:
-        // Make poster for about zeitgeist
+
     }
 }

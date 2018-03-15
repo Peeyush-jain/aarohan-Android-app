@@ -54,7 +54,7 @@ public class EventBS extends BottomSheetDialogFragment {
         register = myView.findViewById(R.id.register_bs);
         RelativeLayout relativeLayout = myView.findViewById(R.id.design_bottom_sheet);
         RelativeLayout nameLayout = myView.findViewById(R.id.name_layout);
-        relativeLayout.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.round_corner_shape));
+        //relativeLayout.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.round_corner_shape));
         name_bs.setText(getArguments().getString("eventTitle"));
         rules.setText(getArguments().getString("eventRules"));
         String colorTop = getArguments().getString("color") ;

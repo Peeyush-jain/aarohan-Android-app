@@ -67,7 +67,7 @@ public class HomeEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Athletics","yellow","Lorem <i>ipsum</i> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Athletics","yellow" , getString(R.string.rules_athletics));
                 userViewBS.show(getFragmentManager(), userViewBS.getTag());
             }
         });
@@ -76,7 +76,7 @@ public class HomeEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Badminton","brown","Lorem <i>ipsum</i> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Badminton","brown",getString(R.string.rules_badminton));
                 userViewBS.show(getFragmentManager(), userViewBS.getTag());
             }
         });
@@ -85,7 +85,7 @@ public class HomeEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("BasketBall","red","Lorem <i>ipsum</i> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("BasketBall","red",getString(R.string.rules_basketball));
                 userViewBS.show(getFragmentManager(), userViewBS.getTag());
             }
         });
@@ -94,7 +94,7 @@ public class HomeEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Chess","red","Lorem <i>ipsum</i> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Chess","red",getString(R.string.rules_chess));
                 userViewBS.show(getFragmentManager(), userViewBS.getTag());
             }
         });
@@ -103,7 +103,7 @@ public class HomeEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Football","lightgreen","Lorem <i>ipsum</i> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Football","lightgreen",getString(R.string.rules_football));
                 userViewBS.show(getFragmentManager(), userViewBS.getTag());
             }
         });
@@ -112,7 +112,7 @@ public class HomeEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Cricket","skyblue","Lorem <i>ipsum</i> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Cricket","skyblue",getString(R.string.rules_cricket));
                 userViewBS.show(getFragmentManager(), userViewBS.getTag());
             }
         });
@@ -123,7 +123,7 @@ public class HomeEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Table Tennis","green","Lorem <i>ipsum</i> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("Table Tennis","green",getString(R.string.rules_tabletennis));
                 userViewBS.show(getFragmentManager(), userViewBS.getTag());
             }
         });
@@ -131,7 +131,7 @@ public class HomeEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("VolleyBall","purple","Lorem <i>ipsum</i> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+                final BottomSheetDialogFragment userViewBS = EventBS.newInstance("VolleyBall","purple",getString(R.string.rules_volleyball));
                 userViewBS.show(getFragmentManager(), userViewBS.getTag());
             }
         });
