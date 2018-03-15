@@ -18,7 +18,7 @@ public class ContactUS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
         getSupportActionBar().setTitle("Contact Us");
-        TextView mail_ids[] = {findViewById(R.id.coreteam_email1), findViewById(R.id.coreteam_email2), findViewById(R.id.coreteam_email3), findViewById(R.id.coreteam_email4), findViewById(R.id.coreteam_email5), findViewById(R.id.codteam_email1), findViewById(R.id.codteam_email2), findViewById(R.id.codteam_email3), findViewById(R.id.codteam_email4), findViewById(R.id.codteam_email5), findViewById(R.id.codteam_email6), findViewById(R.id.codteam_email7), findViewById(R.id.codteam_email8),
+        /*TextView mail_ids[] = {findViewById(R.id.coreteam_email1), findViewById(R.id.coreteam_email2), findViewById(R.id.coreteam_email3), findViewById(R.id.coreteam_email4), findViewById(R.id.coreteam_email5), findViewById(R.id.codteam_email1), findViewById(R.id.codteam_email2), findViewById(R.id.codteam_email3), findViewById(R.id.codteam_email4), findViewById(R.id.codteam_email5), findViewById(R.id.codteam_email6), findViewById(R.id.codteam_email7), findViewById(R.id.codteam_email8),
                 findViewById(R.id.codteam_email9), findViewById(R.id.codteam_email10), findViewById(R.id.codteam_email11), findViewById(R.id.codteam_email12), findViewById(R.id.codteam_email13), findViewById(R.id.codteam_email14), findViewById(R.id.codteam_email15)};
 
         View.OnClickListener EmailOnClick = new View.OnClickListener() {
@@ -50,5 +50,6 @@ public class ContactUS extends AppCompatActivity {
                 findViewById(R.id.codteam_phone9), findViewById(R.id.codteam_phone10), findViewById(R.id.codteam_phone11), findViewById(R.id.codteam_phone12), findViewById(R.id.codteam_phone13), findViewById(R.id.codteam_phone14), findViewById(R.id.codteam_phone15)};
         for (int i = 0; i < PhoneNos.length; i++)
             PhoneNos[i].setOnClickListener(PhoneOnClick);
+            */
     }
 }
