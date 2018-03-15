@@ -81,6 +81,8 @@ public class Results extends AppCompatActivity {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
+                finish();
+                System.exit(0);
                 return true;
         }
         return super.onOptionsItemSelected(item);
