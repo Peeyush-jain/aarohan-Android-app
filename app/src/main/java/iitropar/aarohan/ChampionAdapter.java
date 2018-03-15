@@ -78,6 +78,7 @@ public class ChampionAdapter extends RecyclerView.Adapter<ChampionAdapter.ViewHo
             holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bad));
         }
         else if (event.getType() == 4){ // basketball boys
+            //TODO : change bask to bad
             holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bask));
         }
         else if (event.getType() == 5){ // basketball boys

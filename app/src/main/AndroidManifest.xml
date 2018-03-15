@@ -88,13 +88,19 @@
         <activity android:name="iitropar.aarohan.Developers"
             android:theme="@style/MyActionBar"
             android:parentActivityName=".MainActivity"/>
-
+        <activity android:name="iitropar.aarohan.Guidelines"
+            android:theme="@style/MyActionBar"
+            android:parentActivityName=".MainActivity"
+            />
 
         <activity
             android:name="iitropar.aarohan.Results"
             android:parentActivityName="iitropar.aarohan.MainActivity"
             android:theme="@style/MyActionBar"
+            android:hardwareAccelerated="false"
+            android:largeHeap="true"
             />
+
         <activity
             android:name="iitropar.aarohan.Anouncement"
             android:label="@string/title_activity_anouncement"
