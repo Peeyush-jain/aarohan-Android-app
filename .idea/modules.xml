@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Zeitgeist18.iml" filepath="$PROJECT_DIR$/Zeitgeist18.iml" />
       <module fileurl="file://$PROJECT_DIR$/aarohan-Android-app.iml" filepath="$PROJECT_DIR$/aarohan-Android-app.iml" />
-      <module fileurl="file://C:\Users\frien_000\Desktop\Android Apps\Zeitgeist18\aarohan-Android-app.iml" filepath="C:\Users\frien_000\Desktop\Android Apps\Zeitgeist18\aarohan-Android-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
