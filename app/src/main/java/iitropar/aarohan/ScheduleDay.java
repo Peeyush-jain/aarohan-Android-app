@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -86,6 +88,8 @@ public class ScheduleDay extends AppCompatActivity  {
             getSupportActionBar().setTitle("Day 3");
 
         }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+       // getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sports_array, R.layout.spinner_item);
@@ -264,4 +268,18 @@ public class ScheduleDay extends AppCompatActivity  {
     }
 
 
+//    @Override
+//    public void onBackPressed() {
+//        HomeScheduleFragment fragment = new HomeScheduleFragment();
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.container, fragment, fragment.getClass().getSimpleName())
+//                .addToBackStack(null)
+//                .commit();
+//
+////        Intent intent = new Intent(this , MainActivity.class);
+////        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+////        startActivity(intent);
+//
+//        super.onBackPressed();
+//    }
 }

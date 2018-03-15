@@ -59,6 +59,7 @@ public class HomeScheduleFragment extends Fragment {
                 intent.putExtra("dayNumber" , 1);
 
                 startActivity(intent);
+
             }
         });
 
@@ -69,6 +70,8 @@ public class HomeScheduleFragment extends Fragment {
                 intent.putExtra("dayNumber" , 2);
 
                 startActivity(intent);
+
+
             }
         });
 
@@ -79,6 +82,7 @@ public class HomeScheduleFragment extends Fragment {
                 intent.putExtra("dayNumber" , 3);
 
                 startActivity(intent);
+
             }
         });
 

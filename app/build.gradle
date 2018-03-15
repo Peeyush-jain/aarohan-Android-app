@@ -37,7 +37,8 @@ dependencies {
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
     compile 'de.hdodenhof:circleimageview:2.2.0'
     compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
-    compile 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
+
 
 }
 

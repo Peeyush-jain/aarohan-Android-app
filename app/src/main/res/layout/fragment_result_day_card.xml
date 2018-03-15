@@ -8,8 +8,19 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp">
 
+    <TextView
+        android:id="@+id/type"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Athletics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-5dp"/>
     <RelativeLayout
         android:id="@+id/rl1"
+        android:layout_below="@+id/type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -35,7 +46,7 @@
             android:layout_centerHorizontal="true"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/volley_boys"
+            android:src="@drawable/versus"
             />
 
         <TextView
@@ -75,7 +86,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="Venue : LT PCSA"
-            android:layout_marginTop="10dp"
             android:textSize="14sp" />
 
         <TextView
@@ -108,6 +118,10 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"/>
-
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/description"
+        android:background="#c0c0c0"/>
 
 </RelativeLayout>

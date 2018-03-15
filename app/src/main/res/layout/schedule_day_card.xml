@@ -7,11 +7,22 @@
     android:paddingRight="5dp"
     android:background="@color/transparent"
     >
+    <TextView
+        android:id="@+id/type"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Athletics"
+        android:layout_marginBottom="-5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <RelativeLayout
         android:id="@+id/rl1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/type">
 
         <TextView
             android:id="@+id/teamA"
@@ -34,7 +45,7 @@
             android:layout_centerHorizontal="true"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/volley_boys"
+            android:src="@drawable/versus"
             android:background="@color/transparent"
             />
 
@@ -67,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl1"
-        android:layout_marginTop="2dp">
+        android:layout_marginTop="-5dp">
 
         <TextView
             android:id="@+id/venue"
@@ -91,7 +102,11 @@
 
     </RelativeLayout>
 
-
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/relativeLayout"
+        android:background="#c0c0c0"/>
 
 
 

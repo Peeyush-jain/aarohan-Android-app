@@ -1,5 +1,6 @@
 package iitropar.aarohan;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -33,7 +34,7 @@ public class Results extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
     private void setupViewPager(ViewPager viewPager) {
@@ -86,8 +87,12 @@ public class Results extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this , MainActivity.class);
+        startActivity(i);
+        super.onBackPressed();
+    }
 }
 
 

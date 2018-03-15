@@ -27,7 +27,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView teamA , teamB , venue , time ;
+        public TextView teamA , teamB , venue , time , type;
         public ImageView versus ;
         public ViewHolder(View view) {
             super(view);
@@ -36,6 +36,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             time =  view.findViewById(R.id.time);
             teamB = view.findViewById(R.id.teamsecond);
             versus = view.findViewById(R.id.versus);
+            type = view.findViewById(R.id.type);
             dba = new DBHandler(context, null, null, 1);
         }
     }
@@ -62,42 +63,94 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         holder.venue.setText(event.getVenue());
         holder.time.setText(event.getTime());
         holder.teamB.setText(event.getTeamB());
+//        if (event.getType() == 1){ // athletics
+//            Drawable drawable = context.getResources().getDrawable(R.drawable.ath) ;
+//            holder.versus.setImageDrawable(drawable);
+//        }
+//        else if (event.getType() == 2){ // badminton boys
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bad));
+//        }
+//        else if (event.getType() == 3){ // badminton girls
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bad));
+//        }
+//        else if (event.getType() == 4){ // basketball boys
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bask));
+//        }
+//        else if (event.getType() == 5){ // basketball boys
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bask));
+//        }
+//        else if (event.getType() == 6){ // chess
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.ches));
+//        }
+//        else if (event.getType() == 7){ // cricket
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.crick));
+//        }
+//        else if (event.getType() == 8){ // football
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.foot));
+//        }
+//        else if (event.getType() == 9){ // tt boys
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.tt));
+//        }
+//        else if (event.getType() == 10){ // tt girls
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.tt));
+//        }
+//        else if (event.getType() == 11){ // volley boys
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.volley_boys));
+//        }
+//        else if (event.getType() == 12){ // volley girls
+//            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.volley_boys));
+//        }
         if (event.getType() == 1){ // athletics
-            Drawable drawable = context.getResources().getDrawable(R.drawable.ath) ;
-            holder.versus.setImageDrawable(drawable);
+            //Drawable drawable = context.getResources().getDrawable(R.drawable.ath) ;
+            //holder.versus.setImageDrawable(drawable);
+            holder.type.setText("Athletics");
         }
         else if (event.getType() == 2){ // badminton boys
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bad));
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bad));
+            holder.type.setText("Badminton Boys");
         }
         else if (event.getType() == 3){ // badminton girls
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bad));
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bad));
+            holder.type.setText("Badminton Girls");
         }
         else if (event.getType() == 4){ // basketball boys
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bask));
+            //TODO : change bask to bad
+            //System.out.println("ok");
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.ches));
+            holder.type.setText("Basketball Boys");
         }
-        else if (event.getType() == 5){ // basketball boys
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bask));
+        else if (event.getType() == 5){ // basketball girls
+            //System.out.println("ok");
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.bask));
+            holder.type.setText("Basketball Girls");
         }
         else if (event.getType() == 6){ // chess
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.ches));
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.ches));
+            holder.type.setText("Chess");
         }
         else if (event.getType() == 7){ // cricket
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.crick));
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.crick));
+            holder.type.setText("Cricket");
         }
         else if (event.getType() == 8){ // football
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.foot));
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.foot));
+            holder.type.setText("Football");
         }
         else if (event.getType() == 9){ // tt boys
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.tt));
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.tt));
+            holder.type.setText("Table Tennis Boys");
         }
         else if (event.getType() == 10){ // tt girls
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.tt));
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.tt));
+            holder.type.setText("Table Tennis Girls");
         }
         else if (event.getType() == 11){ // volley boys
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.volley_boys));
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.volley_boys));
+            holder.type.setText("VolleyBall Boys");
         }
         else if (event.getType() == 12){ // volley girls
-            holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.volley_boys));
+            //holder.versus.setImageDrawable(context.getResources().getDrawable(R.drawable.volley_boys));
+            holder.type.setText("VolleyBall Girls");
         }
     }
 

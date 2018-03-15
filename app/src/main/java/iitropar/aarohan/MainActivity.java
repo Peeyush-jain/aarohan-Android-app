@@ -1,32 +1,19 @@
 package iitropar.aarohan;
-
-import android.*;
 import android.Manifest;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,51 +25,12 @@ public class MainActivity extends AppCompatActivity
     private FragmentManager fragmentManager;
     private DBHandler dba ;
     private ArrayList<Event> eventList ;
-    private static boolean isNotify = false ;
-    private static int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1 ;
-    private static int MY_PERMISSIONS_REQUEST_CALL_PHONE = 2 ;
 
-    private static int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 3 ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        if (ContextCompat.checkSelfPermission(MainActivity.this,
-//                android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//                != PackageManager.PERMISSION_GRANTED) {
-//
-//
-//            // No explanation needed; request the permission
-//            ActivityCompat.requestPermissions(MainActivity.this ,
-//                    new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
-//                    MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
-//
-//            // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-//            // app-defined int constant. The callback method gets the
-//            // result of the request.
-//
-//        }
-//        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE},MY_PERMISSIONS_REQUEST_CALL_PHONE);
-//        }
-//
-//
-//        if (ContextCompat.checkSelfPermission(MainActivity.this,
-//                Manifest.permission.ACCESS_FINE_LOCATION)
-//                != PackageManager.PERMISSION_GRANTED) {
-//
-//
-//            // No explanation needed; request the permission
-//            ActivityCompat.requestPermissions(MainActivity.this ,
-//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-//                    MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-//
-//            // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-//            // app-defined int constant. The callback method gets the
-//            // result of the request.
-//
-//        }
 
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE, Manifest.permission.ACCESS_FINE_LOCATION};
@@ -90,13 +38,6 @@ public class MainActivity extends AppCompatActivity
         if(!hasPermissions(this, PERMISSIONS)){
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         }
-
-
-
-
-
-
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -154,6 +95,12 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Runtime.getRuntime().gc();
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -167,14 +114,21 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.results) {
             Intent intent = new Intent(this, Results.class);
             startActivity(intent);
+            finish();
+
 
         } else if (id == R.id.about) {
             Intent intent = new Intent(this, AboutZeitgeist.class);
             startActivity(intent);
 
         } else if (id == R.id.contact) {
-            Intent intent = new Intent(this, ContactUS.class);
-            startActivity(intent);
+            //Intent intent = new Intent(this, ContactUS.class);
+            //startActivity(intent);
+            //https://aarohan-iitrpr.github.io/team.html
+            String url = "https://aarohan-iitrpr.github.io/team.html" ;
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
 
         } else if (id == R.id.developers) {
             String url = "https://software-community.github.io/" ;
@@ -183,8 +137,11 @@ public class MainActivity extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.hospitality) {
-            Intent intent = new Intent(this, Guidelines.class);
-            startActivity(intent);
+
+            String url = "https://drive.google.com/file/d/1txNTvDV4hl9XiWtUxU_8V2NhiWnxZ3An/view?usp=sharing" ;
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -192,37 +149,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void copyFile(InputStream in, OutputStream out) throws IOException
-    {
-        byte[] buffer = new byte[1024];
-        int read;
-        while ((read = in.read(buffer)) != -1)
-        {
-            out.write(buffer, 0, read);
-        }
-    }
 
 
-    public void addNotification(String eventName ,String eventVenue , String eventTime , int hrs , int minutes , int count){
-        Intent notifyIntent = new Intent(this ,MyReceiver.class);
-        notifyIntent.putExtra("notificationName",eventName);
-        notifyIntent.putExtra("notificationVenue",eventVenue);
-        notifyIntent.putExtra("notificationTime",eventTime);
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast
-                (context,count, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-//
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTimeInMillis(System.currentTimeMillis());
-//        calendar.set(Calendar.HOUR_OF_DAY, hrs);
-//        calendar.set(Calendar.MINUTE, minutes);
-//        calendar.set(Calendar.SECOND, 0);
-//
-//
-//        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),pendingIntent);
 
-    }
 
 
 }
